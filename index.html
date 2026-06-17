@@ -3,26 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Live top 5 international news headlines aggregated from major sources — BBC, Reuters, CNN, Al Jazeera, NYTimes.">
+  <meta name="theme-color" content="#ffffff">
   <title>Top 5 World Headlines</title>
-  <link rel="stylesheet" href="/assets/styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#headlines-list">Skip to headlines</a>
+
   <header>
     <h1>Top 5 News Headlines — Around the World</h1>
     <p class="subtitle">Live headlines aggregated from international news sources (client-side RSS).</p>
   </header>
 
   <main>
-    <section id="headlines" class="grid">
-      <!-- Headlines will be injected here -->
+    <section id="headlines" aria-labelledby="headlines-heading">
+      <h2 id="headlines-heading" class="visually-hidden">Top 5 world headlines</h2>
+
+      <ul id="headlines-list" class="grid" aria-live="polite" aria-relevant="additions text">
+        <!-- Headline items will be inserted here by script.js -->
+      </ul>
     </section>
-    <div id="status" class="status">Loading headlines...</div>
+
+    <div id="status" class="status" role="status" aria-live="polite">Loading headlines...</div>
   </main>
 
   <footer>
-    <small>Sources: BBC, Reuters, CNN, Al Jazeera, NYTimes. Fetched client-side with a public CORS proxy.</small>
+    <small>Sources: BBC, Reuters, CNN, Al Jazeera, NYTimes. Fetched client-side with a public CORS proxy — consider a server-side proxy for production.</small>
   </footer>
 
-  <script src="/assets/script.js"></script>
+  <noscript>
+    <div class="no-js-message">
+      This site requires JavaScript to fetch the latest headlines. You can view sources directly: BBC, Reuters, CNN, Al Jazeera, NYTimes.
+    </div>
+  </noscript>
+
+  <script src="assets/script.js" defer></script>
 </body>
 </html>
